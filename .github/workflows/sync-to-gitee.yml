@@ -1,0 +1,22 @@
+name: Sync to Gitee
+
+on:
+  push:
+    branches: [main, master] # 在推送到这些分支时触发同步
+  workflow_dispatch: # 允许手动触发
+
+jobs:
+  sync:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Mirror to Gitee
+        uses: Yikun/hub-mirror-action@master
+        with:
+          src: github/Toolmanele/AI_dou_seeds # 源仓库
+          dst: gitee/Toolmanele/AI_dou_seeds # 目标仓库
+          dst_key: ${{ secrets.GITEE_PASSWORD }} # Gitee 私人令牌
+          dst_token: ${{ secrets.GITEE_PASSWORD }} # 同上
+          account_type: user # 如果是组织仓库使用 org，个人用 user
+          force_update: true # 强制更新
+          static_list: "" # 静态同步列表
+          debug: true # 调试模式
