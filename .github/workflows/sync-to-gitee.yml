@@ -14,8 +14,9 @@ jobs:
         with:
           src: github/Toolmanele # 源仓库
           dst: gitee/Toolmanele # 目标仓库
-          dst_key: ${{ secrets.GITEE_PASSWORD }} # Gitee 私人令牌
-          dst_token: ${{ secrets.GITEE_PASSWORD }} # 同上
+          dst_token: ${{ secrets.GITEE_PASSWORD }} # 确保这是 HTTPS 令牌
+          clone_style: https # 强制使用 HTTPS 克隆
+          ssh: false
           account_type: user # 如果是组织仓库使用 org，个人用 user
           force_update: true # 强制更新
           static_list: "" # 静态同步列表
