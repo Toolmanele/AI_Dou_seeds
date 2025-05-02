@@ -1,0 +1,43 @@
+{
+  "name": "ComfyUI",
+  "version": "1.0.0",
+  "type": "seed",
+  "description": "ComfyUI",
+  "tags": ["ComfyUI"],
+  "github": {
+    "repos": [
+      "https://github.com/comfyanonymous/ComfyUI.git",
+      "https://gitee.com/mirrors/comfyui.git",
+      "https://gitcode.com/gh_mirrors/co/ComfyUI.git"
+    ]
+  },
+  "python": "3.10",
+  "pytorch": {
+    "installCommands": [
+      {
+        "name": "nvidia",
+        "value": "pip install torch torchvision torchaudio --extra-index-url {{pytorch_source}}/cu128 --index-url {{pip_source}}"
+      },
+      {
+        "name": "xpu",
+        "value": "pip install --pre torch torchvision torchaudio --index-url https://download.pytorch.org/whl/nightly/xpu"
+      },
+      {
+        "name": "amd-linux",
+        "value": "pip install torch torchvision torchaudio --index-url {{pytorch_source}}/rocm6.2.4"
+      },
+      {
+        "name": "amd-windows",
+        "value": "pip install torch-directml --index-url {{pip_source}}"
+      }
+    ]
+  },
+  "pip": {
+    "installCommands": ["pip install -r requirements.txt"]
+  },
+  "scripts": "xxx.bat/xx.sh",
+  "launch_command": ["python main.py"],
+  "modelsFolder": "./models",
+  "outputFolder": "./output",
+  "flowFolder": "./flows"
+}
